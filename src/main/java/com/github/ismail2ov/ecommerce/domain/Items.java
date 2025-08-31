@@ -16,4 +16,14 @@ public record Items(List<Product> products) {
     public static Items create() {
         return new Items(List.of());
     }
+
+    public Items addItem(Product product) {
+        Objects.requireNonNull(product, "Product must not be null");
+        if (products.contains(product)) {
+            return this;
+        }
+        var newProducts = new java.util.ArrayList<>(products);
+        newProducts.add(product);
+        return new Items(newProducts);
+    }
 }
