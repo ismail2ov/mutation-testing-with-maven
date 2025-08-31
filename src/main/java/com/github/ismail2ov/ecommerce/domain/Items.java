@@ -13,4 +13,7 @@ public record Items(List<Product> products) {
         return new Items(List.of(product));
     }
 
+    public static Items create() {
+        return new Items(List.of());
+    }
 }

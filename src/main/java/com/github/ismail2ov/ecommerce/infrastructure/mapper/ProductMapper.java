@@ -20,4 +20,6 @@ public interface ProductMapper {
     Product fromEntity(ProductEntity productEntity);
 
     ProductEntity entityFrom(Product product);
+
+    Product productFrom(ProductRDTO productRDTO);
 }

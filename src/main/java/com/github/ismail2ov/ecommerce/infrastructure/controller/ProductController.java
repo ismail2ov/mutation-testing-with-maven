@@ -14,11 +14,9 @@ import com.github.ismail2ov.ecommerce.infrastructure.controller.model.ProductRDT
 import com.github.ismail2ov.ecommerce.infrastructure.mapper.ProductMapper;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequiredArgsConstructor
-@Slf4j
 public class ProductController implements ProductsApi {
 
     private final ProductService productService;
