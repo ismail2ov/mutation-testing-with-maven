@@ -1,5 +1,6 @@
 package com.github.ismail2ov.ecommerce.infrastructure.controller;
 
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +21,7 @@ import com.github.ismail2ov.ecommerce.ProductTestDataFactory;
 import com.github.ismail2ov.ecommerce.application.ProductService;
 import com.github.ismail2ov.ecommerce.domain.Product;
 import com.github.ismail2ov.ecommerce.domain.ProductPage;
+import com.github.ismail2ov.ecommerce.domain.exception.ProductNotFoundException;
 import com.github.ismail2ov.ecommerce.infrastructure.mapper.ProductMapperImpl;
 
 @WebMvcTest(ProductController.class)
@@ -80,4 +83,23 @@ class ProductControllerTest {
             .andExpect(status().isBadRequest());
     }
 
+    @Test
+    void when_product_does_not_exist_then_return_not_found() throws Exception {
+        when(productService.getProductBy(1001L)).thenThrow(ProductNotFoundException.class);
+
+        this.mockMvc
+            .perform(get("/products/1001"))
+            .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void when_something_goes_wrong_then_return_internal_server_error() throws Exception {
+
+        doThrow(InternalServerError.class)
+            .when(productService).getAllProducts();
+
+        this.mockMvc
+            .perform(get("/products"))
+            .andExpect(status().isInternalServerError());
+    }
 }
