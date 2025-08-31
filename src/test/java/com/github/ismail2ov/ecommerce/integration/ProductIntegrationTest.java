@@ -12,6 +12,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.jdbc.Sql;
 
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,7 @@ import com.github.ismail2ov.ecommerce.infrastructure.controller.model.ProductRDT
 
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Sql(scripts = "/scripts/RESET_DB.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 class ProductIntegrationTest {
 
     @Autowired
