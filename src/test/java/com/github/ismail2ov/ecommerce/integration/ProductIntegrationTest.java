@@ -17,7 +17,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.junit.jupiter.api.Test;
 
 import com.github.ismail2ov.ecommerce.ProductTestDataFactory;
-import com.github.ismail2ov.ecommerce.TestcontainersConfiguration;
 import com.github.ismail2ov.ecommerce.domain.Product;
 import com.github.ismail2ov.ecommerce.domain.ProductRepository;
 import com.github.ismail2ov.ecommerce.infrastructure.controller.model.ProductPageRDTO;

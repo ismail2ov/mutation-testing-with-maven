@@ -1,4 +1,4 @@
-package com.github.ismail2ov.ecommerce;
+package com.github.ismail2ov.ecommerce.integration;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
@@ -8,7 +8,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 @TestConfiguration(proxyBeanMethods = false)
-public class TestcontainersConfiguration {
+class TestcontainersConfiguration {
 
     @Bean
     @ServiceConnection
