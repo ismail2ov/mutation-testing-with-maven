@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
+import com.github.ismail2ov.ecommerce.domain.exception.BasketNotFoundException;
 import com.github.ismail2ov.ecommerce.domain.exception.CrossSellRelationAlreadyExistsException;
 import com.github.ismail2ov.ecommerce.domain.exception.ProductNotFoundException;
 import com.github.ismail2ov.ecommerce.infrastructure.controller.model.ErrorResponseRDTO;
@@ -13,7 +14,7 @@ import com.github.ismail2ov.ecommerce.infrastructure.controller.model.ErrorRespo
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ProductNotFoundException.class)
+    @ExceptionHandler({ProductNotFoundException.class, BasketNotFoundException.class})
     public ResponseEntity<ErrorResponseRDTO> handleNotFoundException(Exception e) {
         return this.buildResponse(HttpStatus.NOT_FOUND, e);
     }
