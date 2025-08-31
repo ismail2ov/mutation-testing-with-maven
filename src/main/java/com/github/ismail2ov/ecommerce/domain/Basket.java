@@ -10,6 +10,10 @@ public record Basket(Long id, Long userId, Items items) {
         }
     }
 
+    public static Basket forUser(Long userId) {
+        return new Basket(null, userId, Items.create());
+    }
+
     public static Basket forUser(Long userId, Items items) {
         return new Basket(null, userId, items);
     }
