@@ -42,9 +42,11 @@ class BasketIntegrationTest {
 
         ResponseEntity<BasketRDTO> result = testRestTemplate.postForEntity("/users/" + userId + "/basket", productToAdd, BasketRDTO.class);
 
-        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(result).isNotNull();
-        assertThat(Objects.requireNonNull(result.getBody()).getItems().getProducts()).hasSize(1);
+        assertThat(result).satisfies(response -> {
+            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+            assertThat(response).isNotNull();
+            assertThat(Objects.requireNonNull(response.getBody()).getItems().getProducts()).hasSize(1);
+        });
     }
 
     @Test
@@ -54,9 +56,11 @@ class BasketIntegrationTest {
 
         ResponseEntity<BasketRDTO> result = testRestTemplate.postForEntity(BASKET_URL, productToAdd, BasketRDTO.class);
 
-        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(result).isNotNull();
-        assertThat(Objects.requireNonNull(result.getBody()).getItems().getProducts()).hasSize(1);
+        assertThat(result).satisfies(response -> {
+            assertThat(response).isNotNull();
+            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+            assertThat(Objects.requireNonNull(response.getBody()).getItems().getProducts()).hasSize(1);
+        });
     }
 
     @Test
@@ -67,9 +71,11 @@ class BasketIntegrationTest {
 
         ResponseEntity<BasketRDTO> result = testRestTemplate.postForEntity(BASKET_URL, productToAdd, BasketRDTO.class);
 
-        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(result).isNotNull();
-        assertThat(Objects.requireNonNull(result.getBody()).getItems().getProducts()).hasSize(2);
+        assertThat(result).satisfies(response -> {
+            assertThat(response).isNotNull();
+            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+            assertThat(Objects.requireNonNull(response.getBody()).getItems().getProducts()).hasSize(2);
+        });
     }
 
     @Test
@@ -87,9 +93,11 @@ class BasketIntegrationTest {
 
         ResponseEntity<BasketRDTO> result = testRestTemplate.getForEntity(BASKET_URL, BasketRDTO.class);
 
-        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(result).isNotNull();
-        assertThat(Objects.requireNonNull(result.getBody()).getItems().getProducts()).hasSize(1);
+        assertThat(result).satisfies(response -> {
+            assertThat(response).isNotNull();
+            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+            assertThat(Objects.requireNonNull(response.getBody()).getItems().getProducts()).hasSize(1);
+        });
     }
 
     private void createBasket() {
