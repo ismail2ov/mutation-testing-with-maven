@@ -41,7 +41,7 @@ class BasketServiceTest {
 
         Basket actualBasket = basketService.getForUser(USER_ID);
 
-        assertThat(actualBasket).isNotNull();
+        assertThat(actualBasket).isEqualTo(EXPECTED_BASKET);
     }
 
     @Test
@@ -59,7 +59,7 @@ class BasketServiceTest {
 
         Basket actualBasket = basketService.addProductToBasket(USER_ID, PRODUCT);
 
-        assertThat(actualBasket).isNotNull();
+        assertThat(actualBasket).isEqualTo(EXPECTED_BASKET);
     }
 
     @Test
@@ -70,7 +70,7 @@ class BasketServiceTest {
 
         Basket actualBasket = basketService.addProductToBasket(USER_ID, PRODUCT);
 
-        assertThat(actualBasket).isNotNull();
+        assertThat(actualBasket).isEqualTo(expectedBasket);
     }
 
 }
