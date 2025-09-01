@@ -5,6 +5,7 @@
 ![Maven](https://img.shields.io/badge/Maven-3.9.x-C71A36?style=flat-square&logo=apache-maven&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue?style=flat-square&logo=postgresql)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ismail2ov/mutation-testing-with-maven)
 
 --- 
 
