@@ -200,8 +200,13 @@ open target/site/jacoco/index.html
 ./mvnw spotless:check
 ```
 
+#### Check PMD rules
+```bash
+./mvnw pmd:check
+```
+
 #### Verify everything 
-Runs all checks to ensure the project is valid, tests pass, and quality rules, like code coverage, are met.
+Runs all checks to ensure the project is valid, tests pass, and quality rules, such as code coverage and PMD rules, are met.
 ```bash
 ./mvnw clean verify
 ```
