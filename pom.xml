@@ -298,6 +298,9 @@
           <timestampedReports>false</timestampedReports>
           <threads>8</threads>
           <withHistory>true</withHistory>
+          <excludedTestClasses>
+            <param>**.*IntegrationTest</param>
+          </excludedTestClasses>
         </configuration>
       </plugin>
     </plugins>
