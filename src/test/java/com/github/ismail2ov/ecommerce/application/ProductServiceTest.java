@@ -38,17 +38,21 @@ class ProductServiceTest {
 
         List<Product> actualProductsList = productService.getAllProducts();
 
-        assertThat(actualProductsList).isInstanceOf(List.class);
+        assertThat(actualProductsList).isEqualTo(expectedProductsList);
     }
 
     @Test
     void when_product_found_then_return_it() {
-        when(productRepository.findById(PRODUCT_ID)).thenReturn(Optional.of(ProductTestDataFactory.product(1L)));
-        when(productRepository.getCrossSellProducts(PRODUCT_ID)).thenReturn(ProductTestDataFactory.products(List.of(2L, 3L)));
+        Product product = ProductTestDataFactory.product(1L);
+        List<Product> crossSellProducts = ProductTestDataFactory.products(List.of(2L, 3L));
+        ProductPage expected = new ProductPage(product, crossSellProducts);
+
+        when(productRepository.findById(PRODUCT_ID)).thenReturn(Optional.of(product));
+        when(productRepository.getCrossSellProducts(PRODUCT_ID)).thenReturn(crossSellProducts);
 
         ProductPage actual = productService.getProductBy(PRODUCT_ID);
 
-        assertThat(actual).isNotNull();
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
