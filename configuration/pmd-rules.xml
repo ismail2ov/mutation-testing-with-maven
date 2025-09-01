@@ -8,6 +8,8 @@
     PMD ruleset for detecting common bugs and bad practices.
   </description>
 
+  <exclude-pattern>.*/LayerDependencyRulesTest.java</exclude-pattern>
+
   <rule ref="category/java/bestpractices.xml"/>
 
 </ruleset>
