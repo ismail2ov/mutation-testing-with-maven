@@ -8,6 +8,30 @@
 
 --- 
 
+## 📋 Table of Contents
+
+- [Project Overview](#-project-overview)
+- [Project Goal](#-project-goal)
+- [Architecture & Technologies](#%EF%B8%8F-architecture--technologies):
+    - [Core Technologies](#core-technologies)
+    - [Code Quality & Testing Stack](#code-quality--testing-stack)
+    - [Additional Tools](#additional-tools)
+- [Requirements](#-requirements):
+    - [Functional](#-functional-requirements)
+    - [Non-Functional](#%EF%B8%8F-non-functional-requirements)
+- [Getting Started](#-getting-started):
+    - [Prerequisites](#prerequisites)
+    - [Build the project](#build-the-project)
+    - [Running Tests & Quality Checks](#%EF%B8%8F-running-tests--quality-checks)
+    - [Mutation Testing](#mutation-testing)
+    - [Docker](#docker)
+- [Key Learning Outcomes](#-key-learning-outcomes)
+- [Contributing](#-contributing)
+- [Further Reading](#-further-reading)
+- [License](#-license)
+
+--- 
+
 ## 📋 Project Overview
 
 This project demonstrates **why traditional code coverage tools aren't enough** to ensure test quality and how **mutation testing** can reveal weaknesses in your test suite that JaCoCo and PMD might miss.
