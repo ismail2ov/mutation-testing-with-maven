@@ -26,6 +26,7 @@ import com.github.ismail2ov.ecommerce.infrastructure.mapper.ProductMapperImpl;
 
 @WebMvcTest(ProductController.class)
 @Import(ProductMapperImpl.class)
+@SuppressWarnings("PMD.UnitTestShouldIncludeAssert")
 class ProductControllerTest {
 
     @Autowired

@@ -30,6 +30,7 @@ import com.github.ismail2ov.ecommerce.infrastructure.mapper.ProductMapperImpl;
 
 @WebMvcTest(BasketController.class)
 @Import({ProductMapperImpl.class, BasketMapperImpl.class, GlobalExceptionHandler.class})
+@SuppressWarnings("PMD.UnitTestShouldIncludeAssert")
 class BasketControllerTest {
 
     @Autowired
