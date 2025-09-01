@@ -6,17 +6,23 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue?style=flat-square&logo=postgresql)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
+--- 
+
 ## 📋 Project Overview
 
 This project demonstrates **why traditional code coverage tools aren't enough** to ensure test quality and how **mutation testing** can reveal weaknesses in your test suite that JaCoCo and PMD might miss.
 
 Built as an eCommerce cross-selling API using **Spring Boot 3**, this project showcases the implementation of effective mutation testing strategies using **Pitest** with the **Descartes** mutation engine.
 
+--- 
+
 ## 🎯 Project Goal
 
 **Implement an eCommerce system using  Outside-In TDD approach** while demonstrating that even with high code coverage (JaCoCo) and static analysis (PMD), your tests might not be as robust as you think.
 
 **Mutation testing reveals the truth about test quality.**
+
+--- 
 
 ## 🏗️ Architecture & Technologies
 
@@ -41,9 +47,15 @@ Built as an eCommerce cross-selling API using **Spring Boot 3**, this project sh
 - **OpenAPI Generator** - API documentation and client generation
 - **Swagger/OpenAPI** - API documentation
 
-## 🎯 Functional Requirements
+--- 
 
-### 1. We have an eCommerce Rest API with the following endpoints:
+## 📋 Requirements
+
+--- 
+
+### 🎯 Functional Requirements
+
+#### 1. We have an eCommerce Rest API with the following endpoints:
 
 - GET /api/products
 
@@ -53,7 +65,7 @@ Built as an eCommerce cross-selling API using **Spring Boot 3**, this project sh
 
 - POST /api/users/{userId}/basket
 
-### 2. When we enter the products page, the list of all products is returned to us:
+#### 2. When we enter the products page, the list of all products is returned to us:
 
 - GET /api/products
 ```json
@@ -81,7 +93,7 @@ Built as an eCommerce cross-selling API using **Spring Boot 3**, this project sh
 ]
 ```
 
-### 3. When we obtain a product by its ID, the related products are returned next to it:
+#### 3. When we obtain a product by its ID, the related products are returned next to it:
 
 - GET /api/products/{productId}
 ```json
@@ -106,7 +118,7 @@ Built as an eCommerce cross-selling API using **Spring Boot 3**, this project sh
 }
 ```
 
-### 4. We can get a user's basket by their **ID**.
+#### 4. We can get a user's basket by their **ID**.
 
 - GET /api/users/{userId}/basket
 ```json
@@ -125,9 +137,9 @@ Built as an eCommerce cross-selling API using **Spring Boot 3**, this project sh
 }
 ```
 
-### 5. If the customer does not have a basket with products, is returned `HttpStatus.NOT_FOUND`.
+#### 5. If the customer does not have a basket with products, is returned `HttpStatus.NOT_FOUND`.
 
-### 6. We can add products to this basket with POST and the payload:
+#### 6. We can add products to this basket with POST and the payload:
 
 - POST /api/users/{userId}/basket
 ```json
@@ -138,19 +150,20 @@ Built as an eCommerce cross-selling API using **Spring Boot 3**, this project sh
 }
 ```
 
-### 8. When we add a product to a basket and the basket does not exist, it is created automatically and the product is added successfully.
+#### 8. When we add a product to a basket and the basket does not exist, it is created automatically and the product is added successfully.
 
-### 9. When we add a product, it already exists in the basket, it is not added.
+#### 9. When we add a product, it already exists in the basket, it is not added.
 
-### 10. Use PostgreSQL to save the data.
+#### 10. Use PostgreSQL to save the data.
 ![](./docs/ecommerce-cross-selling.database-schema.png "ecommerce cross-selling database chema")
 
-### 11. Use native queries to manage cross-sell data.
+#### 11. Use native queries to manage cross-sell data.
 
-### 12. This is the example of the [table creations](src/main/resources/db/migration/V001__CREATE_SCHEMA.sql).
+#### 12. This is the example of the [table creations](src/main/resources/db/migration/V001__CREATE_SCHEMA.sql).
 
+--- 
 
-## ⚡ Non-Functional Requirements
+### ⏱️ Non-Functional Requirements
 
 - **Test Coverage**: Minimum 80% line coverage
 - **Mutation Coverage**: Minimum 80% mutation score
@@ -158,14 +171,19 @@ Built as an eCommerce cross-selling API using **Spring Boot 3**, this project sh
 - **Code Style**: Consistent formatting enforced by Spotless
 - **Architecture**: Implement a hexagonal architecture with proper layer separation
 
+--- 
 
 ## 🚀 Getting Started
+
+--- 
 
 ### Prerequisites
 
 - **Java 21** or higher
 - **Docker** (for PostgreSQL and Testcontainers)
 - **Maven 3.9.x** (wrapper included)
+
+--- 
 
 ### Build the project
 
@@ -224,6 +242,8 @@ Runs all checks to ensure the project is valid, tests pass, and quality rules, s
 open target/pit-reports/index.html
 ```
 
+--- 
+
 ## Docker
 
 ### Build Docker image:
@@ -250,3 +270,55 @@ URL to access to [Swagger UI](http://localhost:8080/api/swagger-ui.html)
 ```shell
 docker compose down -v
 ```
+
+--- 
+
+## 🎯 Key Learning Outcomes
+
+By exploring this project, you'll understand:
+
+1. **Why 100% code coverage can be misleading**
+2. **How mutation testing reveals test weaknesses that traditional metrics miss**
+3. **The difference between testing code execution vs. testing behavior**
+4. **Practical strategies for writing more effective tests**
+
+--- 
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Write tests first (TDD approach)
+4. Ensure all quality gates pass (`./mvnw clean verify`)
+5. Commit your changes (`git commit -m 'Add some amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+--- 
+
+### Quality Standards
+- Minimum 80% line coverage (JaCoCo)
+- Minimum 80% mutation coverage (PITest)
+- All PMD rules must pass
+- All tests must be green
+
+--- 
+
+## 📚 Further Reading
+
+- [PITest Official Documentation](https://pitest.org/)
+- [Descartes Mutation Engine](https://github.com/STAMP-project/pitest-descartes) - Extreme mutation testing
+- [Mutation Testing: A Comprehensive Guide](https://github.com/ismail2ov/mutation-testing-guide)
+- [Why Code Coverage is Not Enough](https://martinfowler.com/bliki/TestCoverage.html)
+
+--- 
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+--- 
+
+⭐ **If this project helped you understand mutation testing better, please give it a star!**
+
+> "Code coverage tells you what code your tests execute. Mutation testing tells you if your tests actually validate anything meaningful." - The Art of Testing
