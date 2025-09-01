@@ -17,17 +17,19 @@ import com.github.ismail2ov.ecommerce.domain.exception.ProductNotFoundException;
 import com.github.ismail2ov.ecommerce.domain.exception.ProductPersistenceException;
 import com.github.ismail2ov.ecommerce.infrastructure.mapper.ProductMapper;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Repository
 @Transactional
-@RequiredArgsConstructor
 @Slf4j
-public class ProductRepositoryImpl implements ProductRepository {
+public class ProductRepositoryImpl extends BaseRepository<ProductEntity> implements ProductRepository {
 
-    private final EntityManager entityManager;
     private final ProductMapper productMapper;
+
+    public ProductRepositoryImpl(EntityManager entityManager, ProductMapper productMapper) {
+        super(entityManager);
+        this.productMapper = productMapper;
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -70,16 +72,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 
         try {
             ProductEntity productEntity = productMapper.entityFrom(product);
-
-            if (Objects.isNull(productEntity.getId())) {
-                entityManager.persist(productEntity);
-                entityManager.flush();
-                return productMapper.fromEntity(productEntity);
-            } else {
-                ProductEntity savedEntity = entityManager.merge(productEntity);
-                return productMapper.fromEntity(savedEntity);
-            }
-
+            ProductEntity savedEntity = saveOrUpdateEntity(productEntity);
+            return productMapper.fromEntity(savedEntity);
         } catch (Exception e) {
             log.error("Error saving product: {}", product, e);
             throw new ProductPersistenceException("Failed to save product", e);
@@ -109,6 +103,11 @@ public class ProductRepositoryImpl implements ProductRepository {
 
         entityManager.persist(cs);
         entityManager.flush();
+    }
+
+    @Override
+    protected boolean isNew(ProductEntity entity) {
+        return Objects.isNull(entity.getId());
     }
 
     private boolean productNotFound(long productId) {

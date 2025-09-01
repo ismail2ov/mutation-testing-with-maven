@@ -15,17 +15,19 @@ import com.github.ismail2ov.ecommerce.domain.BasketRepository;
 import com.github.ismail2ov.ecommerce.domain.exception.BasketPersistenceException;
 import com.github.ismail2ov.ecommerce.infrastructure.mapper.BasketMapper;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Repository
 @Transactional
-@RequiredArgsConstructor
 @Slf4j
-public class BasketRepositoryImpl implements BasketRepository {
+public class BasketRepositoryImpl extends BaseRepository<BasketEntity> implements BasketRepository {
 
-    private final EntityManager entityManager;
     private final BasketMapper basketMapper;
+
+    public BasketRepositoryImpl(EntityManager entityManager, BasketMapper basketMapper) {
+        super(entityManager);
+        this.basketMapper = basketMapper;
+    }
 
     @Override
     public Basket save(Basket basket) {
@@ -33,16 +35,8 @@ public class BasketRepositoryImpl implements BasketRepository {
 
         try {
             BasketEntity basketEntity = basketMapper.entityFrom(basket);
-
-            if (Objects.isNull(basketEntity.getId())) {
-                entityManager.persist(basketEntity);
-                entityManager.flush();
-                return basketMapper.fromEntity(basketEntity);
-            } else {
-                BasketEntity savedEntity = entityManager.merge(basketEntity);
-                return basketMapper.fromEntity(savedEntity);
-            }
-
+            BasketEntity savedEntity = saveOrUpdateEntity(basketEntity);
+            return basketMapper.fromEntity(savedEntity);
         } catch (Exception e) {
             log.error("Error saving basket: {}", basket, e);
             throw new BasketPersistenceException("Failed to save basket", e);
@@ -60,5 +54,10 @@ public class BasketRepositoryImpl implements BasketRepository {
 
         Optional<BasketEntity> basketEntity = results.stream().findFirst();
         return basketEntity.map(basketMapper::fromEntity);
+    }
+
+    @Override
+    protected boolean isNew(BasketEntity entity) {
+        return Objects.isNull(entity.getId());
     }
 }
