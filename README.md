@@ -330,10 +330,9 @@ By exploring this project, you'll understand:
 
 ## 📚 Further Reading
 
-- [PITest Official Documentation](https://pitest.org/)
-- [Descartes Mutation Engine](https://github.com/STAMP-project/pitest-descartes) - Extreme mutation testing
-- [Mutation Testing: A Comprehensive Guide](https://github.com/ismail2ov/mutation-testing-guide)
-- [Why Code Coverage is Not Enough](https://martinfowler.com/bliki/TestCoverage.html)
+- [PITest](https://pitest.org/)
+- [Descartes Mutation Engine](https://github.com/STAMP-project/pitest-descartes)
+- [Test Coverage](https://martinfowler.com/bliki/TestCoverage.html)
 
 --- 
 
