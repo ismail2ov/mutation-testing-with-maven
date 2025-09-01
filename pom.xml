@@ -294,6 +294,11 @@
             <version>1.2.3</version>
           </dependency>
         </dependencies>
+        <configuration>
+          <timestampedReports>false</timestampedReports>
+          <threads>8</threads>
+          <withHistory>true</withHistory>
+        </configuration>
       </plugin>
     </plugins>
   </build>
