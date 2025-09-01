@@ -251,6 +251,14 @@
             </configuration>
           </execution>
         </executions>
+        <configuration>
+          <excludes>
+            <exclude>**/*Application.*</exclude>
+            <exclude>**/*RDTO.*</exclude>
+            <exclude>**/*MapperImpl.*</exclude>
+            <exclude>**/controller/api/ApiUtil.*</exclude>
+          </excludes>
+        </configuration>
       </plugin>
     </plugins>
   </build>
