@@ -37,6 +37,7 @@
     <archunit.version>1.4.1</archunit.version>
     <hypersistence-utils-hibernate-63.version>3.10.3</hypersistence-utils-hibernate-63.version>
     <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
+    <maven-pmd-plugin.version>3.23.0</maven-pmd-plugin.version>
   </properties>
   <dependencies>
     <dependency>
@@ -162,6 +163,28 @@
             </exclude>
           </excludes>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>${maven-pmd-plugin.version}</version>
+        <configuration>
+          <includeTests>true</includeTests>
+          <failOnViolation>true</failOnViolation>
+          <printFailingErrors>true</printFailingErrors>
+          <rulesets>
+            <ruleset>configuration/pmd-rules.xml</ruleset>
+          </rulesets>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>
+                check
+              </goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>com.diffplug.spotless</groupId>
