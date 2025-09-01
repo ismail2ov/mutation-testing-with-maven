@@ -157,3 +157,51 @@ Built as an eCommerce cross-selling API using **Spring Boot 3**, this project sh
 - **Static Analysis**: Zero PMD violations
 - **Code Style**: Consistent formatting enforced by Spotless
 - **Architecture**: Implement a hexagonal architecture with proper layer separation
+
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Java 21** or higher
+- **Docker** (for PostgreSQL and Testcontainers)
+- **Maven 3.9.x** (wrapper included)
+
+### Build the project
+
+```shell
+./mvnw clean package
+```
+
+### 🛠️ Running Tests & Quality Checks
+
+#### Standard Test Execution
+```bash
+./mvnw test
+```
+
+#### Generate JaCoCo coverage report
+```bash
+./mvnw jacoco:report
+```
+
+#### View JaCoCo coverage report
+```shell
+open target/site/jacoco/index.html
+```
+
+#### Check minimum coverage
+```shell
+./mvnw jacoco:check
+```
+
+#### Check code style and formatting rules
+```bash
+./mvnw spotless:check
+```
+
+#### Verify everything 
+Runs all checks to ensure the project is valid, tests pass, and quality rules, like code coverage, are met.
+```bash
+./mvnw clean verify
+```
