@@ -9,6 +9,7 @@
   </description>
 
   <exclude-pattern>.*/LayerDependencyRulesTest.java</exclude-pattern>
+  <exclude-pattern>.*/.*MapperImpl.java</exclude-pattern>
 
   <rule ref="category/java/bestpractices.xml"/>
 
