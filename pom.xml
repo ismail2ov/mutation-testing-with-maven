@@ -300,6 +300,7 @@
           <withHistory>true</withHistory>
           <excludedTestClasses>
             <param>**.*IntegrationTest</param>
+            <param>**.LayerDependencyRulesTest</param>
           </excludedTestClasses>
         </configuration>
       </plugin>
