@@ -298,6 +298,7 @@
           <timestampedReports>false</timestampedReports>
           <threads>8</threads>
           <withHistory>true</withHistory>
+          <mutationThreshold>80</mutationThreshold>
           <excludedTestClasses>
             <param>**.*IntegrationTest</param>
             <param>**.LayerDependencyRulesTest</param>
