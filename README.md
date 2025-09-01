@@ -210,3 +210,16 @@ Runs all checks to ensure the project is valid, tests pass, and quality rules, s
 ```bash
 ./mvnw clean verify
 ```
+
+
+### Mutation Testing
+
+#### Run the mutation tests
+```shell
+ ./mvnw pitest:mutationCoverage
+```
+
+####  View detailed mutation report
+```shell
+open target/pit-reports/index.html
+```
