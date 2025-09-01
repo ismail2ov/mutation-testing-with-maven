@@ -223,3 +223,30 @@ Runs all checks to ensure the project is valid, tests pass, and quality rules, s
 ```shell
 open target/pit-reports/index.html
 ```
+
+## Docker
+
+### Build Docker image:
+```shell
+docker build -t mutation-testing-with-maven .
+```
+
+### Create and run a new container from an image:
+```shell
+docker run -d -p 8080:8080 --name mutation-testing-with-maven mutation-testing-with-maven
+```
+
+### Run with docker compose
+
+```shell
+docker compose up -d
+```
+
+### Access
+URL to access to [Swagger UI](http://localhost:8080/api/swagger-ui.html)
+
+
+### Stop docker containers:
+```shell
+docker compose down -v
+```
