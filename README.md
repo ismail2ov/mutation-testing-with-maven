@@ -39,6 +39,8 @@ This project demonstrates **why traditional code coverage tools aren't enough** 
 
 Built as an eCommerce cross-selling API using **Spring Boot 3**, this project showcases the implementation of effective mutation testing strategies using **Pitest** with the **Descartes** mutation engine.
 
+> This project uses Maven. If your usual build tool is Gradle, check out the analogous project: [An example of effective mutation testing in Spring Boot 3 projects with Gradle](https://github.com/ismail2ov/mutation-testing-with-gradle).
+
 --- 
 
 ## 🎯 Project Goal
@@ -345,4 +347,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ⭐ **If this project helped you understand mutation testing better, please give it a star!**
 
-> "Code coverage tells you what code your tests execute. Mutation testing tells you if your tests actually validate anything meaningful." - The Art of Testing
+> Code coverage tells you what code your tests execute. Mutation testing tells you if your tests actually validate anything meaningful.
